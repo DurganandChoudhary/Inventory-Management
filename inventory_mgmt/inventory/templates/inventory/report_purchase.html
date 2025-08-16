@@ -1,0 +1,33 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+<h3>Purchase Report</h3>
+<form class="row g-2 mb-3">
+  <div class="col-auto"><input type="date" class="form-control" name="from" value="{{ date_from }}"></div>
+  <div class="col-auto"><input type="date" class="form-control" name="to" value="{{ date_to }}"></div>
+  <div class="col-auto">
+    <select name="item" class="form-select">
+      <option value="">All Items</option>
+      {% for it in items %}
+        <option value="{{ it.id }}" {% if item_id == it.id %}selected{% endif %}>{{ it.item_name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-auto"><button class="btn btn-outline-secondary">Search</button></div>
+</form>
+<table class="table table-bordered">
+  <tr><th>#</th><th>Date</th><th>Invoice</th><th>Supplier</th><th>Item</th><th>Qty</th><th>Price</th><th>Amount</th></tr>
+  {% for r in rows %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ r.purchase_master.invoice_date }}</td>
+    <td>{{ r.purchase_master.invoice_no }}</td>
+    <td>{{ r.purchase_master.supplier }}</td>
+    <td>{{ r.item }}</td>
+    <td>{{ r.quantity }}</td>
+    <td>{{ r.price }}</td>
+    <td>{{ r.amount }}</td>
+  </tr>
+  {% empty %}<tr><td colspan="8">No records.</td></tr>{% endfor %}
+  <tr><th colspan="7" class="text-end">Total</th><th>{{ total }}</th></tr>
+</table>
+{% endblock %}

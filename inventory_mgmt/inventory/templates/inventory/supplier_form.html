@@ -1,0 +1,101 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+<style>
+  /* Center the form container */
+  .form-container {
+    max-width: 550px;
+    margin: 0 auto;
+  }
+  /* Card style */
+  .card {
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    border: none;
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+  }
+  /* Heading style */
+  h3 {
+    text-align: center;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  /* Center align input fields */
+  .form-container input,
+  .form-container select,
+  .form-container textarea {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  /* Smaller address textarea */
+  .form-container textarea {
+    height: 60px; /* Reduced height */
+    resize: none; /* Prevent resizing */
+  }
+  /* Labels */
+  .form-container label {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    color: #222;
+    margin-top: 10px;
+  }
+  /* Buttons */
+  .btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+  }
+  .btn-primary {
+    background-color: #4facfe;
+    border-color: #4facfe;
+  }
+  .btn-primary:hover {
+    background-color: #3b8edc;
+    border-color: #3b8edc;
+  }
+  .btn-secondary {
+    background-color: #6c757d;
+  }
+</style>
+
+<div class="form-container">
+  <h3>Supplier</h3>
+  <form method="post" class="card card-body">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="d-flex justify-content-center gap-2 mt-3">
+      <button class="btn btn-primary">💾 Save</button>
+      <a href="{% url 'supplier_list' %}" class="btn btn-secondary">⬅ Back</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends 'inventory/base.html' %}
+{% block content %}
+<h3>Supplier</h3>
+<form method="post" class="card card-body">{% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-primary">Save</button>
+  <a href="{% url 'supplier_list' %}" class="btn btn-secondary">Back</a>
+</form>
+{% endblock %} {% endcomment %}

@@ -1,0 +1,19 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+<h3>Purchase {{ obj.invoice_no }}</h3>
+<p><b>Date:</b> {{ obj.invoice_date }} | <b>Supplier:</b> {{ obj.supplier }}</p>
+<table class="table table-bordered">
+  <tr><th>#</th><th>Item</th><th>Qty</th><th>Price</th><th>Amount</th></tr>
+  {% for d in obj.details.all %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ d.item }}</td>
+    <td>{{ d.quantity }}</td>
+    <td>{{ d.price }}</td>
+    <td>{{ d.amount }}</td>
+  </tr>
+  {% endfor %}
+  <tr><th colspan="4" class="text-end">Total</th><th>{{ obj.total_amount }}</th></tr>
+</table>
+<a class="btn btn-secondary" href="{% url 'purchase_list' %}">Back</a>
+{% endblock %}

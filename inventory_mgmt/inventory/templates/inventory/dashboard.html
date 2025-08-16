@@ -1,0 +1,104 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+<style>
+  /* Dashboard Card Styles */
+  .stat-card {
+    color: #222; /* Dark text */
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+  .bg-brand { background: linear-gradient(135deg, #ff9a9e, #fad0c4); }
+  .bg-item { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+  .bg-supplier { background: linear-gradient(135deg, #fbc2eb, #a6c1ee); }
+  .bg-purchase { background: linear-gradient(135deg, #84fab0, #8fd3f4); }
+  .bg-sale { background: linear-gradient(135deg, #fccb90, #d57eeb); }
+
+  .card-body .h5 {
+    font-weight: 700;
+  }
+  .card-body .display-6 {
+    font-weight: 800;
+  }
+</style>
+
+<div class="row g-3">
+  <div class="col-md-2">
+    <div class="card stat-card bg-brand text-center">
+      <div class="card-body">
+        <div class="h5">Brands</div>
+        <div class="display-6">{{ brand_count }}</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-2">
+    <div class="card stat-card bg-item text-center">
+      <div class="card-body">
+        <div class="h5">Items</div>
+        <div class="display-6">{{ item_count }}</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-2">
+    <div class="card stat-card bg-supplier text-center">
+      <div class="card-body">
+        <div class="h5">Suppliers</div>
+        <div class="display-6">{{ supplier_count }}</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-3">
+    <div class="card stat-card bg-purchase text-center">
+      <div class="card-body">
+        <div class="h5">Purchases</div>
+        <div class="display-6">{{ purchase_count }}</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-3">
+    <div class="card stat-card bg-sale text-center">
+      <div class="card-body">
+        <div class="h5">Sales</div>
+        <div class="display-6">{{ sale_count }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends 'inventory/base.html' %}
+{% block content %}
+<div class="row g-3">
+  <div class="col-md-2"><div class="card text-center"><div class="card-body">
+    <div class="h5">Brands</div><div class="display-6">{{ brand_count }}</div>
+  </div></div></div>
+  <div class="col-md-2"><div class="card text-center"><div class="card-body">
+    <div class="h5">Items</div><div class="display-6">{{ item_count }}</div>
+  </div></div></div>
+  <div class="col-md-2"><div class="card text-center"><div class="card-body">
+    <div class="h5">Suppliers</div><div class="display-6">{{ supplier_count }}</div>
+  </div></div></div>
+  <div class="col-md-3"><div class="card text-center"><div class="card-body">
+    <div class="h5">Purchases</div><div class="display-6">{{ purchase_count }}</div>
+  </div></div></div>
+  <div class="col-md-3"><div class="card text-center"><div class="card-body">
+    <div class="h5">Sales</div><div class="display-6">{{ sale_count }}</div>
+  </div></div></div>
+</div>
+{% endblock %} {% endcomment %}

@@ -1,0 +1,67 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+<style>
+  /* Center the form container */
+  .form-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  /* Card style */
+  .card {
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: none;
+  }
+  /* Heading */
+  h3 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  /* Center align input fields and labels */
+  .form-container input,
+  .form-container select,
+  .form-container textarea {
+    text-align: center;
+    width: 80%;            /* Narrower input width */
+    margin: 0 auto;        /* Center horizontally */
+    display: block;        /* Ensure margin auto works */
+  }
+  .form-container label {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+  }
+  /* Buttons */
+  .btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+  }
+</style>
+
+<div class="form-container">
+  <h3>Brand</h3>
+  <form method="post" class="card card-body">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="d-flex justify-content-center gap-2 mt-3">
+      <button class="btn btn-primary">💾 Save</button>
+      <a href="{% url 'brand_list' %}" class="btn btn-secondary">⬅ Back</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

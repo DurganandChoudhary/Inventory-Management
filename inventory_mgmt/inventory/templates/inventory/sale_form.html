@@ -1,0 +1,199 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+<h3>New Sale</h3>
+<form method="post">{% csrf_token %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <!-- Replace invoice_date field with date picker -->
+      <label for="invoice_date">Invoice Date:</label>
+      <input type="date" id="invoice_date" name="invoice_date" value="{{ today_date|date:'Y-m-d' }}" required>
+
+      <!-- Render remaining fields except invoice_date -->
+      {% for field in m_form %}
+        {% if field.name != 'invoice_date' %}
+          <p>{{ field.label_tag }} {{ field }}</p>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      {{ formset.management_form }}
+      <table class="table">
+        <tr><th>Item</th><th>Qty</th><th>Price</th><th></th></tr>
+        {% for f in formset.forms %}
+        <tr>
+          <td>{{ f.item }}</td>
+          <td>{{ f.qty }}</td>
+          <td>{{ f.price }}</td>
+          <td>{% if f.instance.pk %}{{ f.DELETE }} Delete{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <button class="btn btn-outline-secondary" type="submit">Save Sale</button>
+    </div>
+  </div>
+</form>
+
+<style>
+/* Center and style the sale form fields (smaller size) */
+.card-body label {
+  display: block;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.2rem;
+  font-size: 0.9rem; /* smaller font */
+  color: #0072ff;
+}
+
+.card-body input, 
+.card-body select {
+  display: block;
+  margin: 0 auto 0.5rem auto;
+  text-align: center;
+  border: 1.5px solid #00c6ff; /* thinner border */
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem; /* smaller padding */
+  width: 60%; /* smaller width */
+  max-width: 250px; /* smaller max width */
+  font-size: 0.9rem; /* smaller font */
+  transition: all 0.3s ease;
+}
+
+.card-body input:focus, 
+.card-body select:focus {
+  border-color: #00ff9d;
+  box-shadow: 0 0 6px rgba(0,255,157,0.5);
+  outline: none;
+}
+
+/* Style the table (slightly smaller) */
+.table {
+  margin-top: 0.8rem;
+  text-align: center;
+  font-size: 0.9rem; /* smaller table text */
+}
+
+.table th, .table td {
+  vertical-align: middle;
+  text-align: center;
+  padding: 0.4rem 0.6rem; /* smaller padding */
+}
+
+/* Style Save button (smaller) */
+.btn-outline-secondary {
+  display: block;
+  margin: 0.8rem auto 0 auto;
+  padding: 0.4rem 1.5rem; /* smaller padding */
+  font-weight: 600;
+  font-size: 0.9rem; /* smaller font */
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #00c6ff;
+  color: #fff;
+  transform: scale(1.05);
+}
+</style>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends 'inventory/base.html' %}
+{% block content %}
+<h3>New Sale</h3>
+<form method="post">{% csrf_token %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <!-- Replace invoice_date field with date picker -->
+      <label for="invoice_date">Invoice Date:</label>
+      <input type="date" id="invoice_date" name="invoice_date" value="{{ today_date|date:'Y-m-d' }}" required>
+
+      <!-- Render remaining fields except invoice_date -->
+      {% for field in m_form %}
+        {% if field.name != 'invoice_date' %}
+          <p>{{ field.label_tag }} {{ field }}</p>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      {{ formset.management_form }}
+      <table class="table">
+        <tr><th>Item</th><th>Qty</th><th>Price</th><th></th></tr>
+        {% for f in formset.forms %}
+        <tr>
+          <td>{{ f.item }}</td>
+          <td>{{ f.qty }}</td>
+          <td>{{ f.price }}</td>
+          <td>{% if f.instance.pk %}{{ f.DELETE }} Delete{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <button class="btn btn-outline-secondary" type="submit">Save Sale</button>
+    </div>
+  </div>
+</form>
+{% endblock %} {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends 'inventory/base.html' %}
+{% block content %}
+<h3>New Sale</h3>
+<form method="post">{% csrf_token %}
+  <div class="card mb-3">
+    <div class="card-body">
+      {{ m_form.as_p }}
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      {{ formset.management_form }}
+      <table class="table">
+        <tr><th>Item</th><th>Qty</th><th>Price</th><th></th></tr>
+        {% for f in formset.forms %}
+        <tr>
+          <td>{{ f.item }}</td>
+          <td>{{ f.qty }}</td>
+          <td>{{ f.price }}</td>
+          <td>{% if f.instance.pk %}{{ f.DELETE }} Delete{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <button class="btn btn-outline-secondary" type="submit">Save Sale</button>
+    </div>
+  </div>
+</form>
+{% endblock %} {% endcomment %}

@@ -1,0 +1,22 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+<h3>Stock Report</h3>
+<form class="row g-2 mb-3">
+  <div class="col-auto"><input class="form-control" name="q" value="{{ q }}" placeholder="Item name/code"></div>
+  <div class="col-auto"><button class="btn btn-outline-secondary">Search</button></div>
+</form>
+<table class="table table-bordered">
+  <tr><th>#</th><th>Item</th><th>Code</th><th>Brand</th><th>Purchased</th><th>Sold</th><th>Balance</th></tr>
+  {% for item, in_qty, out_qty, bal in rows %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ item.item_name }}</td>
+    <td>{{ item.item_code }}</td>
+    <td>{{ item.brand.brand_name }}</td>
+    <td>{{ in_qty|default:0 }}</td>
+    <td>{{ out_qty|default:0 }}</td>
+    <td><b>{{ bal|default:0 }}</b></td>
+  </tr>
+  {% empty %}<tr><td colspan="7">No records.</td></tr>{% endfor %}
+</table>
+{% endblock %}
